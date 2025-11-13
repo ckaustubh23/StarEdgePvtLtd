@@ -1,0 +1,30 @@
+<div class="layout-container">
+
+  <aside class="sidebar">
+
+    <div class="logo-image">
+      <img src="../../../../assets/images/Logo.png" alt="Company Logo">
+    </div>
+    
+    <ul>
+      <li routerLink="/dashboard" routerLinkActive="active" (click)="closeAdminMenu()">Dashboard</li>
+      <li routerLink="/createUser" routerLinkActive="active" (click)="closeAdminMenu()">User</li>
+
+      <li (click)="toggleAdminMenu()" [class.open]="adminMenuOpen">
+        Admin
+      </li>
+
+      <div class="admin-submenu" *ngIf="adminMenuOpen">
+        <li routerLink="/admin/create task" routerLinkActive="active" (click)="closeAdminMenu()">Create</li>
+        <li routerLink="/admin/view task" routerLinkActive="active" (click)="closeAdminMenu()">View</li>        
+      </div>
+
+      
+      <li (click)="logout()" (click)="closeAdminMenu()">Logout</li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="login-container text-center">
+    
+    <div class="logo-image">
+      <img src="../../../../assets/images/Logo.png" alt="Company Logo">
+    </div>
+    
+    <h2>Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+      <div class="form-group mb-3">
+        <label for="mobileNo" class="form-label">Mobile No</label>
+        <input
+          type="text"
+          id="mobileNo"
+          formControlName="mobileNo"
+          class="form-control"
+          placeholder="Enter Mobile No"
+        />
+        <small class="text-danger" *ngIf="loginForm.get('mobileNo')?.touched && loginForm.get('mobileNo')?.invalid">
+          Mobile No is required
+        </small>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="mPin" class="form-label">M-Pin</label>
+        <input
+          type="password"
+          id="mPin"
+          formControlName="mPin"
+          class="form-control"
+          placeholder="Enter 4 digit M-Pin"
+        />
+        <small class="text-danger" *ngIf="loginForm.get('mPin')?.touched && loginForm.get('mPin')?.invalid">
+          M-Pin is required
+        </small>
+      </div>
+
+      <div *ngIf="errorMessage" class="error text-danger mb-2">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
+        {{ isLoading ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+  </div>
+</div>
