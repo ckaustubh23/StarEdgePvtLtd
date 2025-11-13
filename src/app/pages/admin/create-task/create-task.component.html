@@ -14,5 +14,34 @@
                 Task name is required
             </small>
         </div>
+
+        <div class="form-group">
+            <label for="state">Select State</label>
+            <select id="state" formControlName="state">
+                <option value="">-- Select State --</option>
+                <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+            </select>
+            <small *ngIf="taskForm.get('state')?.touched && taskForm.get('state')?.invalid">
+                Please select a state
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="file">Upload Excel File</label>
+            <input
+                type="file"
+                id="file"
+                (change)="onFileSelect($event)"
+                accept=".xls,.xlsx"
+            />
+            <small *ngIf="fileName">{{ fileName }}</small>
+            <small *ngIf="fileError" class="error">{{ fileError }}</small>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" [disabled]="taskForm.invalid || !selectedFile">
+                Create Task
+            </button>
+        </div>
     </form>
 </div>
