@@ -39,4 +39,28 @@
             font-size: 13px;
         }
     }
+
+    .form-actions{
+        text-align: left;
+
+        button{
+            background-color: #1e293b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s ease;
+
+            &:hover {
+                background: #1e3a8a;
+            }
+
+            &:disabled {
+                background: #94a3b8;
+                cursor: not-allowed;
+            }
+        }
+    }
 }
